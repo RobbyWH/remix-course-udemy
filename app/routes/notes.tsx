@@ -1,4 +1,4 @@
-import { LinksFunction, ActionArgs, redirect, LoaderArgs, json } from "@remix-run/node";
+import { LinksFunction, ActionArgs, redirect, LoaderArgs, json, MetaFunction } from "@remix-run/node";
 import { Link, useCatch, useLoaderData } from "@remix-run/react";
 import NewNote, {links as newNoteLinks} from "~/components/NewNote";
 import NoteList, {links as noteListLinks} from "~/components/NoteList";
@@ -9,6 +9,13 @@ export const links: LinksFunction = () => {
     ...newNoteLinks(),
     ...noteListLinks()
   ];
+};
+
+export const meta: MetaFunction = () => {
+  return {
+    title: "All Notes",
+    description: "Manage your notes with ease."
+  };
 };
 
 export async function action({ request }: ActionArgs) {
